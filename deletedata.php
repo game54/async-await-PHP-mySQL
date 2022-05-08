@@ -8,10 +8,13 @@ $car = $_GET["q"];
 // sql to delete a record
 $sql = "DELETE FROM cars WHERE carname= '$car' ";
 
-if ($conn->query($sql) === TRUE) {
+// var_dump($sql);
+// echo $conn->affected_rows
+
+if (mysqli_query($conn, $sql) && $conn->affected_rows > 0) {
   echo "Record deleted successfully";
 } else {
-  echo "Error deleting record: " . $conn->error;
+  echo "Error deleting record: " . mysqli_error($conn);
 }
 
 $conn->close();

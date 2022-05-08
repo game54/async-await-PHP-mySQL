@@ -139,6 +139,9 @@ $conn->close();
   async function fetchPost() {
     const carName = document.querySelector("#carname");
     const carname = (carName.value);
+
+    if (carname === "") return;
+
     const response = await fetch('insertdata.php', {
       method: "POST",
       body: `carname=${carname}`,
@@ -169,6 +172,8 @@ $conn->close();
   async function ajaxCallsDelete() {
     const carName = document.querySelector("#carname");
     const carname = (carName.value);
+
+    if (carname === "") return;
 
     const response = await fetch(`deletedata.php?q=${carname}`, {
       method: "GET",
